@@ -3,13 +3,21 @@
 //  UITableView
 //
 //  Created by Hannie Kim on 9/10/21.
-//
+//  Modified by Saurabh on 08/20/23.
 
 import UIKit
 
 class ContentView: UIView {
 
     // MARK: - UI Properties
+    
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = UIColor(named: "Cream")
+        tableView.register(ProductDetailTableViewCell.self, forCellReuseIdentifier: "ProductDetailTableViewCell")
+        return tableView
+    }()
     
     // MARK: - Initializers
     
@@ -28,6 +36,15 @@ class ContentView: UIView {
     // MARK: - UI Setup
     
     private func setUpViews() {
+        addSubview(tableView)
         
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
     }
+    
+    
 }
