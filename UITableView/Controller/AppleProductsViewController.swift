@@ -34,10 +34,13 @@ class AppleProductsViewController: UIViewController {
 }
 
 extension AppleProductsViewController: UITableViewDelegate {
+
+    //number of sections
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
+    //didselectrowat for action on cell selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
@@ -58,6 +61,7 @@ extension AppleProductsViewController: UITableViewDelegate {
 
 extension AppleProductsViewController: UITableViewDataSource {
     
+    // titleforHeaderSection
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -66,6 +70,19 @@ extension AppleProductsViewController: UITableViewDataSource {
             return "iPhones"
         case 2:
             return "iPads"
+        default:
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "End of Macs"
+        case 1:
+            return "End of iPhones"
+        case 2:
+            return "End of iPads"
         default:
             return nil
         }
@@ -85,6 +102,7 @@ extension AppleProductsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //returns cell with same cell string registered before
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailTableViewCell", for: indexPath) as? ProductDetailTableViewCell else {
             return UITableViewCell()
         }
