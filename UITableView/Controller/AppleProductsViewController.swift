@@ -62,17 +62,37 @@ extension AppleProductsViewController: UITableViewDelegate {
 extension AppleProductsViewController: UITableViewDataSource {
     
     // titleforHeaderSection
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        switch section {
+//        case 0:
+//            return "Macs"
+//        case 1:
+//            return "iPhones"
+//        case 2:
+//            return "iPads"
+//        default:
+//            return nil
+//        }
+//    }
+    
+    // view for header section
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProductTableHeaderView") as? ProductTableHeaderView else {
+            return nil
+        }
+        
         switch section {
         case 0:
-            return "Macs"
+            headerView.headerTitle = "Macs"
         case 1:
-            return "iPhones"
+            headerView.headerTitle = "iPhones"
         case 2:
-            return "iPads"
+            headerView.headerTitle = "iPads"
         default:
             return nil
         }
+        
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
